@@ -1,0 +1,25 @@
+.link {
+    font: inherit;
+    color: inherit;
+}
+
+.main-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;;
+}
+
+.main-page__test-php {
+    text-decoration: none;
+    margin: 0 0 15px 0;
+    padding: 15px 25px;
+    background-color: lightskyblue;
+    border: 1px solid deepskyblue;
+    border-radius: 8px;
+    color: black;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
+}

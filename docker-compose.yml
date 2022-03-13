@@ -13,6 +13,7 @@ services:
       dockerfile: ./docker/php-fpm/Dockerfile
     volumes:
       - ./app:/app
+      - ./docker/php-fpm/php.ini:/usr/local/etc/php/conf.d/php.ini
   mysql:
     image: mysql:latest
     environment:

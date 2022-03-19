@@ -1,4 +1,6 @@
 <?php
+phpinfo();
+
 $pdo = new PDO('mysql:dbname=php-basic;host=mysql', 'anton', 'antonpass', [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
 $query = $pdo->query('SHOW VARIABLES like "version"');

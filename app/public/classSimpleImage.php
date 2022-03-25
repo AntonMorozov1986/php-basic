@@ -29,11 +29,13 @@ class SimpleImage {
       $this->image_type = $image_info[2];
       if( $this->image_type == IMAGETYPE_JPEG ) {
          $this->image = imagecreatefromjpeg($filename);
+
       } elseif( $this->image_type == IMAGETYPE_GIF ) {
          $this->image = imagecreatefromgif($filename);
       } elseif( $this->image_type == IMAGETYPE_PNG ) {
          $this->image = imagecreatefrompng($filename);
       }
+      return (bool) $this->image;
    }
    function save($filename, $image_type=IMAGETYPE_JPEG, $compression=75, $permissions=null): bool
    {

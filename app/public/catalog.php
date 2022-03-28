@@ -31,10 +31,11 @@ var_dump($_SERVER['DOCUMENT_ROOT']);
                         <h4><?=$good['price']?> руб.</h4>
                     </div>
                 </a>
-                <a class="good__buy-button" href="#?action=buy&id=<?=$good['id']?>">Купить</a>
+                <button class="good__buy-button" data-good-id="<?=$good['id']?>">Купить</button>
             </div>
         <?php endwhile;?>
     </div>
 </div>
+<script src="./addGoodToCart.js"></script>
 </body>
 </html>

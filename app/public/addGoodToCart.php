@@ -5,12 +5,13 @@ if (!isset($_SESSION['counter'])) {
 } else {
     $_SESSION['counter']++;
 }
-$postData = file_get_contents('php://input');
-$goodId = json_decode($postData)->goodId;
+$sessionId = session_id();
+$postData = json_decode(file_get_contents('php://input'));
 $response = [
     'status' => 'success',
-    'goodId' => $goodId,
-    'session' => $_SESSION
+    'postData' => $postData,
+    'session' => $_SESSION,
+    'id' => $sessionId
 ];
 header('Content-Type: application/json');
 echo json_encode($response);

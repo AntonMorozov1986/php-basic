@@ -20,6 +20,9 @@ var_dump($_SERVER['DOCUMENT_ROOT']);
 <body>
 <div class="main-page">
     <a href="/">Home</a>
+    <hr/>
+    <a href="./cart.php">Корзина</a>
+    <p>Товаров в корзине: </p>
     <h1>Каталог товаров</h1>
     <div class="goods">
         <?php while ($good = $goods->fetch_assoc()):?>

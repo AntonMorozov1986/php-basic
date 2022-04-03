@@ -6,7 +6,7 @@ async function sendPostRequest(data) {
         },
         body: JSON.stringify(data),
     }
-    const response = await fetch('/addToCart.php', settings)
+    const response = await fetch('/addGoodToCart.php', settings)
     return response.json();
 }
 

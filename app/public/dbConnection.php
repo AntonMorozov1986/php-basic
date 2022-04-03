@@ -1,5 +1,5 @@
 <?php
-function getDb()
+function getDb(): ?mysqli
 {
     static $db = null;
     if (is_null($db)) {

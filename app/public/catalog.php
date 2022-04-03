@@ -2,12 +2,15 @@
 include './dbConnection.php';
 const GOODS_IMG = './goods_images/';
 
+session_start();
+
 function getGoodsList() {
-    return getDb()->query('SELECT * FROM goods');
+    return getDb()
+        ->query('SELECT * FROM goods')
+        ->fetch_all(MYSQLI_ASSOC);
 }
 
 $goods = getGoodsList();
-var_dump($_SERVER['DOCUMENT_ROOT']);
 ?>
 
 <!DOCTYPE html>
@@ -22,13 +25,13 @@ var_dump($_SERVER['DOCUMENT_ROOT']);
     <a href="/">Home</a>
     <hr/>
     <a href="./cart.php">Корзина</a>
-    <p>Товаров в корзине: </p>
+    <p>Товаров в корзине: <span id="cart-amount"></span></p>
     <h1>Каталог товаров</h1>
     <div class="goods">
-        <?php while ($good = $goods->fetch_assoc()):?>
+        <?php foreach ($goods as $good):?>
             <div class="good">
                 <a class="good__description" href="./good.php?id=<?=$good['id']?>">
-                    <img src="<?=GOODS_IMG . $good['image']?>" width="150" />
+                    <img src="<?=GOODS_IMG . $good['image']?>" width="150" alt="Наименование товара: <?=$good['name']?>"/>
                     <div class="good__text">
                         <h3><?=$good['name']?></h3>
                         <h4><?=$good['price']?> руб.</h4>
@@ -36,9 +39,11 @@ var_dump($_SERVER['DOCUMENT_ROOT']);
                 </a>
                 <button class="good__buy-button" data-good-id="<?=$good['id']?>">Купить</button>
             </div>
-        <?php endwhile;?>
+        <?php endforeach;?>
     </div>
 </div>
-<script src="./addGoodToCart.js"></script>
+<script src="./js/sendRequest.js"></script>
+<script src="./js/addGoodToCart.js"></script>
+<script src="./js/getCartAmount.js"></script>
 </body>
 </html>

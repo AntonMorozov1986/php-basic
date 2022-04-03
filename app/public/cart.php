@@ -37,7 +37,10 @@ $cart = getCart();
     <a href="/">Home</a>
     <a href="./catalog.php">Catalog</a>
     <h1>Корзина товаров</h1>
-    <?php if (empty($cart)) echo "<h2>Ваша корзина пуста. <a href='./catalog.php'>Перейти в каталог</a></h2>" ?>
+    <?php if (empty($cart)):?>
+    <h2>Ваша корзина пуста. <a href='./catalog.php'>Перейти в каталог</a></h2>
+    <?php else:?>
+    <button id="order-button">Оформить заказ</button>
     <div class="goods">
         <?php foreach ($cart as $good):?>
             <div class="good">
@@ -52,8 +55,10 @@ $cart = getCart();
             </div>
         <?php endforeach;?>
     </div>
+    <?php endif;?>
 </div>
 <script src="./js/sendRequest.js"></script>
 <script src="./js/deleteGoodFromCart.js"></script>
+<script src="./js/makeOrder.js"></script>
 </body>
 </html>

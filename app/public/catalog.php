@@ -11,6 +11,8 @@ function getGoodsList() {
 }
 
 $goods = getGoodsList();
+var_dump($_SESSION);
+var_dump(session_id());
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +25,15 @@ $goods = getGoodsList();
 <body>
 <div class="main-page">
     <a href="/">Home</a>
+    <?php if($_SESSION['user']):?>
+        <span>Добро пожаловать, <?=$_SESSION['user']?></span>
+        <a href="/logout.php">Выйти</a>
+    <?php else:?>
+        <a href="/login.php">Войти</a>
+    <?php endif;?>
+    <?php if ($_SESSION['role'] === 'admin'):?>
+        <a href="/orders.php">Заказы</a>
+    <?php endif;?>
     <hr/>
     <a href="./cart.php">Корзина</a>
     <p>Товаров в корзине: <span id="cart-amount"></span></p>

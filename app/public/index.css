@@ -27,6 +27,7 @@
 .goods {
     display: flex;
     flex-wrap: wrap;
+    margin: 16px;
 }
 .good {
     display: flex;

@@ -10,6 +10,15 @@ async function sendPostRequest(url, data = '') {
     return response.json();
 }
 
+async function sendFormRequest(url, form = new FormData) {
+    const settings = {
+        method: 'POST',
+        body: form,
+    }
+    const response = await fetch(url, settings)
+    return response.json();
+}
+
 async function sendGetRequest(url) {
     const settings = {
         method: 'GET',
